@@ -24,7 +24,7 @@ public class Main {
 //            productService.createProduct(product);
 
             // 3: Gebruiker opslaan
-        GebruikerService gebruikerService = new GebruikerService();
+        GebruikerService gebruikerService = GebruikerService.getInstance();
 //            Gebruiker gebruiker = new Gebruiker();
 //            gebruiker.setNaam("Jane Doe");
 //            gebruiker.setEmail("jane@example.com");

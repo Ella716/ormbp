@@ -1,5 +1,6 @@
 package sr.unasat.bp24.hibernate.repository;
 import jakarta.persistence.TypedQuery;
+import sr.unasat.bp24.hibernate.configuration.JPAConfiguration;
 import sr.unasat.bp24.hibernate.entity.Gebruiker;
 
 import jakarta.persistence.EntityManager;
@@ -9,8 +10,10 @@ public class GebruikerRepository {
 
     private static GebruikerRepository instance;
 
+    private EntityManager entityManager;
+
     private GebruikerRepository() {
-        // De constructor is privé, zodat er geen andere instanties van deze klasse kunnen worden gemaakt
+        entityManager = JPAConfiguration.getEntityManager();
     }
 
     public static GebruikerRepository getInstance() {
@@ -20,7 +23,7 @@ public class GebruikerRepository {
 
         return instance;
     }
-    private EntityManager entityManager;
+
 
     public GebruikerRepository(EntityManager entityManager) {
         this.entityManager = entityManager;

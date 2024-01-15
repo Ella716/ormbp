@@ -9,11 +9,24 @@ import sr.unasat.bp24.hibernate.repository.GebruikerRepository;
 import java.util.List;
 
 public class GebruikerService {
-    private final GebruikerRepository repository;
 
-    public GebruikerService() {
-        this.repository = new GebruikerRepository(JPAConfiguration.getEntityManager());
+    private static GebruikerService instance;
+
+    private GebruikerService() {
+        // De constructor is privé, zodat er geen andere instanties van deze klasse kunnen worden gemaakt
     }
+
+    public static GebruikerService getInstance() {
+        if (instance == null) {
+            instance = new GebruikerService();
+        }
+
+        return instance;
+    }
+
+    private GebruikerRepository repository = GebruikerRepository.getInstance();
+
+
 
     public List<Gebruiker> getGebruikers() {
         return repository.getGebruikers();
