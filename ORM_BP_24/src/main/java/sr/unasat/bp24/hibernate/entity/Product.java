@@ -28,6 +28,15 @@ public class Product {
     @OneToOne(mappedBy = "speciaalProduct")
     private SpecialeAanbieding specialeAanbieding;
 
+    public Product(String naam, double prijs) {
+        this.naam = naam;
+        this.prijs = prijs;
+    }
+
+    public Product() {
+
+    }
+
     public int getProductId() {
         return productId;
     }

@@ -9,6 +9,7 @@ public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categorieId;
+    @Column(unique = true)
     private String naam;
 
     @OneToMany(mappedBy = "categorie")

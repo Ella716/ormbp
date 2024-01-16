@@ -17,8 +17,7 @@ public class CategorieService {
         return repository.getCategorieen();
     }
 
-    public Categorie createCategorie(Categorie categorie) {
-        return repository.createCategorie(categorie);
+    public Categorie createCategorie(String categorieNaam) {
+        return repository.createCategorie(categorieNaam);
     }
-
 }

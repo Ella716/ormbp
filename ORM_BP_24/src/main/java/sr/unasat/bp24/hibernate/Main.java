@@ -1,8 +1,10 @@
 package sr.unasat.bp24.hibernate;
 
 import sr.unasat.bp24.hibernate.entity.*;
+import sr.unasat.bp24.hibernate.factory.ProductFactory;
 import sr.unasat.bp24.hibernate.service.*;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -11,31 +13,29 @@ public class Main {
 
             //1: Categorie opslaan
 //            CategorieService categorieService = new CategorieService();
-//            Categorie categorie = new Categorie();
-//            categorie.setNaam("Electronics");
-//            categorieService.createCategorie(categorie);
+//            Categorie categorie = categorieService.createCategorie("Electronics");
+
 
             //2: Product opslaan (met verwijzing naar Categorie)
-            ProductService productService = new ProductService();
-//            Product product = new Product();
-//            product.setNaam("Computer");
-//            product.setPrijs(499.99);
+            // Product maken met Factory pattern
+//            Product product = ProductFactory.maakProduct("Smartphone", 699.99);
 //            product.setCategorie(categorie);
+            ProductService productService = new ProductService();
 //            productService.createProduct(product);
 
-            // 3: Gebruiker opslaan
-        GebruikerService gebruikerService = GebruikerService.getInstance();
+            // 3: Gebruiker opslaan(singleton)
+            GebruikerService gebruikerService = GebruikerService.getInstance();
 //            Gebruiker gebruiker = new Gebruiker();
-//            gebruiker.setNaam("Jane Doe");
-//            gebruiker.setEmail("jane@example.com");
-//            gebruiker.setWachtwoord("password456");
+//            gebruiker.setNaam("Doe Doe");
+//            gebruiker.setEmail("doe@example.com");
+//            gebruiker.setWachtwoord("password147");
 //            gebruikerService.createGebruiker(gebruiker);
 
             // 4: Beoordeling opslaan (met verwijzingen naar Gebruiker en Product)
 //            BeoordelingService beoordelingService = new BeoordelingService();
 //            Beoordeling beoordeling = new Beoordeling();
-//            beoordeling.setOpmerking("Okay product!");
-//            beoordeling.setScore(3);
+//            beoordeling.setOpmerking("Fantastisch product!");
+//            beoordeling.setScore(5);
 //            beoordeling.setGebruiker(gebruiker);
 //            beoordeling.setProduct(product);
 //            beoordelingService.createBeoordeling(beoordeling);
@@ -58,12 +58,12 @@ public class Main {
             // 7: SpecialeAanbieding opslaan (met verwijzing naar Product)
 //            SpecialeAanbiedingService aanbiedingService = new SpecialeAanbiedingService();
 //            SpecialeAanbieding aanbieding = new SpecialeAanbieding();
-//            aanbieding.setAanbiedingTekst("Limited-time offer!");
+//            aanbieding.setAanbiedingTekst("Limited-edition!");
 //            aanbieding.setSpeciaalProduct(product);
 //            aanbiedingService.createSpecialeAanbieding(aanbieding);
 
 //            //Read
-              //int gebruikerId = 1;
+//              int gebruikerId = 1;
 //            Gebruiker gevondenGebruiker = gebruikerService.getGebruikerById(gebruikerId);
 //
 //            if (gevondenGebruiker != null) {
@@ -98,20 +98,19 @@ public class Main {
 
         //Zoekfunctie 1(gebruiker)
 //        List<Gebruiker> gevondenGebruikers = gebruikerService.zoekGebruikersOpNaam("Jane Doe");
-
-        // Verwerk de resultaten
+//
 //        for (Gebruiker gebruiker : gevondenGebruikers) {
 //            System.out.println("Gevonden gebruiker: " + gebruiker.getNaam());
 //        }
 
         //Zoekfunctie 2(product)
-        List<Product> gevondenProducten = productService.zoekProductenOpNaam("Smart");
+//        List<Product> gevondenProducten = productService.zoekProductenOpNaam("Smart");
 
-// Verwerk de resultaten
 //        for (Product product : gevondenProducten) {
 //            System.out.println("Gevonden product: " + product.getNaam());
 //        }
 
+        //Rapportage 1
         List<Aankoop> alleAankopen = aankoopService.getAankopen();
 
         System.out.println("---- Aankooprapportage ----");
@@ -120,6 +119,7 @@ public class Main {
                     " op " + aankoop.getDatum() + " van product " + aankoop.getProduct().getNaam());
         }
 
+//            Rapportage 2
         List<Gebruiker> alleGebruikers = gebruikerService.getGebruikers();
 
         System.out.println("---- Gebruikersrapportage ----");
